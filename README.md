@@ -6,6 +6,7 @@ Thanks to the rapid advances in the deep learning techniques and the wide availa
 ## Dependencies
 * GTX1080Ti
 * python 3.6  
+* Matlab R2016b  
 * pytorch 1.2.0  
 * soundfile  
 * scipy  
