@@ -6,6 +6,8 @@ Thanks to the rapid advances in the deep learning techniques and the wide availa
 ## News
 1. We have changed audioclass.py to audioclass_V2.py in audio file, because the previous classification method will lead to the judgment of the class 'rodents, rats and Mie' as background sound.
 2. We have changed the generation method of CAM. The former method uses the traditional generation method of CAM. It is very inconvenient to generate the cam results in the training process. We have changed the generation code of CAM.
+3. At present, the combination of audio and video is not optimal. We have made many attempts, such as nn.Bilinear , can achieve higher scores.
+These changes will be made in future versions and will be open source.
 ## Dependencies
 * GTX1080Ti
 * python 3.6  
