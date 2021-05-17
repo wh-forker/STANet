@@ -12,7 +12,7 @@ import torchvision
 import warnings
 import argparse
 from torch.utils.data import DataLoader
-from data_av import ImageFolder
+from audiodata import ImageFolder
 warnings.filterwarnings("ignore")
 random.seed(3344)
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # GPU ID
