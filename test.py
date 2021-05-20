@@ -21,7 +21,7 @@ import time
 batch_size = 30
 scale = 356
 
-Audio_path = 'E:\\STAViS-master\\data\\audio_feature\\'
+Audio_path = './data/audio_feature/'
 def make_dataset(ori_path):
     path_list = []
     
@@ -79,8 +79,8 @@ class ImageFolder(Dataset):
         return len(self.imgs)
 
 
-img_path = '.\data\video_frames\'
-save_path = 'results\'
+img_path = './data/video_frames/'
+save_path = './results/'
 test_set = ImageFolder(img_path)
 test_loader = DataLoader(test_set, batch_size=batch_size,
                          num_workers=0, shuffle=False)
@@ -102,8 +102,8 @@ with torch.no_grad():
         outputs = model(audio_pil, img_variable, switch)
         print(time.time() - t0, "seconds wall time")
         for z in range(0, batch_size):
-            img = cv2.imread(img_path + label_name[z] + '\\' + \
-                file_name[z] + '\\' + img_name[z])
+            img = cv2.imread(img_path + label_name[z] + '/' + \
+                file_name[z] + '/' + img_name[z])
 
             prediction = outputs[z].data.squeeze(0).squeeze(0).cpu()
             prediction = (prediction.numpy()*255.).astype(np.int)/255.
@@ -113,10 +113,10 @@ with torch.no_grad():
             #heatmap = cv2.applyColorMap(prediction, cv2.COLORMAP_JET)
             
             #result = heatmap * 0.3 + img * 0.5
-            path = save_path + label_name[z] + '\\' + file_name[z] + '\\'
+            path = save_path + label_name[z] + '/' + file_name[z] + '/'
 
-            if not os.path.exists(save_path + label_name[z] + '\\'):
-                os.mkdir(save_path + label_name[z] + '\\')
+            if not os.path.exists(save_path + label_name[z] + '/'):
+                os.mkdir(save_path + label_name[z] + '/')
             print([label_name[z] + '=' + file_name[z]+'='+img_name[z]])
             if not os.path.exists(path):
                 os.mkdir(path)
