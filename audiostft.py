@@ -16,9 +16,9 @@ import math
 import os
 from torchvision import datasets, transforms
 
-video_path = ".\Img2\"
-audio_dir = ".\Audio2\"
-feature_path = ".\Audio3\"
+video_path = "./Img2/"
+audio_dir = "./Audio2/"
+feature_path = "./Audio3/"
 ori_name = os.listdir(video_path)
 for file in range(0, len(ori_name)):
     print(ori_name[file])
