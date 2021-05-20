@@ -84,9 +84,9 @@ class ImageFolder(data.Dataset):
         return len(self.imgs)
 
 
-img_path = '.\Crop_data\crop\'
-aud_path = '.\AVE\AVE_Dataset\Audio2\'
-save_path = 'result\'
+img_path = './Crop_data/crop/'
+aud_path = './AVE/AVE_Dataset/Audio2/'
+save_path = './result/'
 test_set = ImageFolder(img_path, aud_path, preprocess)
 test_loader = DataLoader(test_set, batch_size=batch_size,
                          num_workers=0, shuffle=False)
@@ -115,7 +115,7 @@ def hook_feature(module, input, output):
 
 
 to_pil = transforms.ToPILImage()
-model = torch.load('.\modelAV\stagefine.pt')
+model = torch.load('./modelAV/stagefine.pt')
 
 model.cuda().eval()
 model._modules.get('layer1_4').register_forward_hook(hook_feature)
@@ -151,14 +151,14 @@ with torch.no_grad():
 
                 heatmap = cv2.applyColorMap(cv2.resize(
                     CAMs[z], (scale, scale)), cv2.COLORMAP_JET)
-                img = cv2.imread(img_path + label_name[z] + '\\' + \
-                    file_name[z] + '\\' + img_name[z])
+                img = cv2.imread(img_path + label_name[z] + '/' + \
+                    file_name[z] + '/' + img_name[z])
                 img = cv2.resize(img, (scale, scale))
                 result = heatmap * 0.3 + img * 0.5
-                path = save_path + label_name[z] + '\\' + file_name[z] + '\\'
+                path = save_path + label_name[z] + '/' + file_name[z] + '/'
 
-                if not os.path.exists(save_path + label_name[z] + '\\'):
-                    os.mkdir(save_path + label_name[z] + '\\')
+                if not os.path.exists(save_path + label_name[z] + '/'):
+                    os.mkdir(save_path + label_name[z] + '/')
                 print([label_name[z] + '=' + file_name[z]+'='+img_name[z]])
                 if not os.path.exists(path):
                     os.mkdir(path)
