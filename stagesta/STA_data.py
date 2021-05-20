@@ -10,8 +10,8 @@ from PIL import Image
 from torchvision import transforms
 import joint_transforms
 
-Audio_path = ".\AVE\AVE_Dataset\audio2\"
-Crop_path = '.\crop\crop\'
+Audio_path = "./AVE/AVE_Dataset/audio2/"
+Crop_path = './crop/'
 def make_dataset(ori_path):
     path_list1 = []
     path_list2 = []
@@ -26,9 +26,9 @@ def make_dataset(ori_path):
             picname = os.listdir(picpath)
             for picp in range(2, len(picname)-2):
                 if picname[picp].endswith('.jpg'):
-                    ps = Backg_path+ori_name[file]+'\\'+ficname[fs]+'\\'+picname[picp][0:-4]+'_c.jpg'
+                    ps = Backg_path+ori_name[file]+'/'+ficname[fs]+'/'+picname[picp][0:-4]+'_c.jpg'
                     pv = os.path.join(picpath, picname[picp])
-                    pa = Audio_path+ori_name[file]+'\\'+ficname[fs]+'\\'+picname[picp][0:-4]+'_asp.h5'
+                    pa = Audio_path+ori_name[file]+'/'+ficname[fs]+'/'+picname[picp][0:-4]+'_asp.h5'
                     if os.path.exists(ps) and os .path.exists(pa):
                         path_list1.append(picname[picp][0:-4]+'+'+pv+'+'+ps+'+'+pa+'+'+str(file)+'+'+ori_name[file]+'+'+ficname[fs]+'+'+picname[picp][:-6]+'.jpg')
     return path_list1
