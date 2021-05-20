@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser(description='AVE')
 parser.add_argument('--model_name', type=str, default='AV_att',
                     help='model name')
 parser.add_argument('--dir_order_train', type=str,
-                    default='.\AVE\AVE_Dataset\Img2\',
+                    default='./AVE/AVE_Dataset/Img2/',
                     help='indices of training samples')
 parser.add_argument('--nb_epoch', type=int, default=300,
                     help='number of epoch')
