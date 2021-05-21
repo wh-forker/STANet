@@ -9,8 +9,8 @@ from PIL import Image
 import random
 from torchvision import transforms
 
-Audio_path = ".\AVE\AVE_Dataset\audio_features\"
-Youyin_path = '.\AVE\AVE_Dataset\audiotrue\'  # audio  feature is true
+Audio_path = "./AVE/AVE_Dataset/audio_features/"
+Forg_path = './AVE/AVE_Dataset/audiotrue/'  # audio  feature is true
 def make_dataset(ori_path):
     path_listz = []
     path_listo = []
@@ -24,7 +24,7 @@ def make_dataset(ori_path):
             picpath = os.path.join(ficpath, ficname[fs])
             picname = os.listdir(picpath)
             for picp in range(0, len(picname)):
-                if os.path.exists(os.path.join(Youyin_path, ori_name[file], ficname[fs], picname[picp][:-4]+'.jpg')):
+                if os.path.exists(os.path.join(Forg_path, ori_name[file], ficname[fs], picname[picp][:-4]+'.jpg')):
                     onoroff = '1'
                     pa = os.path.join(Audio_path, ori_name[file], ficname[fs], picname[picp][:-4]+'_asp.h5')
                     path_listo.append(onoroff+'+'+pa+'+'+str(file)+'+'+ori_name[file]+'+'+ficname[fs]+'+'+picname[picp][:-4]+'.jpg')
