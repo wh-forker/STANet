@@ -26,7 +26,7 @@ def make_dataset(ori_path):
             picname = os.listdir(picpath)
             for picp in range(2, len(picname)-2):
                 if picname[picp].endswith('.jpg'):
-                    ps = Backg_path+ori_name[file]+'/'+ficname[fs]+'/'+picname[picp][0:-4]+'_c.jpg'
+                    ps = Crop_path+ori_name[file]+'/'+ficname[fs]+'/'+picname[picp][0:-4]+'_c.jpg'
                     pv = os.path.join(picpath, picname[picp])
                     pa = Audio_path+ori_name[file]+'/'+ficname[fs]+'/'+picname[picp][0:-4]+'_asp.h5'
                     if os.path.exists(ps) and os .path.exists(pa):
