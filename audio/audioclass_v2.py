@@ -78,8 +78,8 @@ class ImageFolder(data.Dataset):
 
     def __getitem__(self, index):
         img_path = self.imgs[index]
-        imgname = img_path.split('\\')
-        with h5py.File('G:\\Data\\Audio3\\'+imgname[3]+'\\'+imgname[4]+'\\'+imgname[5][:-4]+'_asp.h5', 'r') as hf:
+        imgname = img_path.split('/')
+        with h5py.File('G:/Data/Audio3/'+imgname[3]+'/'+imgname[4]+'/'+imgname[5][:-4]+'_asp.h5', 'r') as hf:
             audio_features = np.float32(hf['dataset'][:])
         return torch.from_numpy(audio_features).float(), imgname[-3], imgname[-2], imgname[-1]
 
@@ -103,9 +103,9 @@ def main():
             classes.append(row[0])
     classes = sorted(classes)
 
-    ori_path = 'G:\\Data\\Audio3\\'
-    img2_path = 'G:\\Data\\train\\'
-    audio_on_paht = 'G:\\Data\\train_h\\'
+    ori_path = 'G:/Data/Audio3/'
+    img2_path = 'G:/Data/train/'
+    audio_on_paht = 'G:/Data/train_h/'
     test_set = ImageFolder(img2_path)
     batch_size = 3
     test_loader = DataLoader(test_set, batch_size=batch_size,
@@ -164,12 +164,12 @@ def main():
                     t = t.lower()
                     result = str.find(s, t) != -1
                     if result: 
-                        audio_on_savepaht = audio_on_paht+'\\' + \
-                            ori_name[m]+'\\'+ficname[m]+'\\'
+                        audio_on_savepaht = audio_on_paht+'/' + \
+                            ori_name[m]+'/'+ficname[m]+'/'
                         if not os.path.exists(audio_on_savepaht):
                             os.makedirs(audio_on_savepaht)
                         xmm = cv2.resize(cv2.imread(
-                            img2_path+'\\'+ori_name[m]+'\\'+ficname[m]+'\\'+picname[m]),(1,1))
+                            img2_path+'/'+ori_name[m]+'/'+ficname[m]+'/'+picname[m]),(1,1))
                         cv2.imwrite(audio_on_savepaht +
                                     picname[m], xmm)
 
