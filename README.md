@@ -22,7 +22,7 @@ We use Fourier-transformed audio features as input, therefore, we firstly need t
 - Stage 2. testing the model of S<sub>coarse</sub>, ST<sub>coarse</sub>, SA<sub>coarse</sub> respectively using original AVE frames.  
 - Stage 3. training the model of S<sub>fine</sub>, ST<sub>fine</sub>, SA<sub>fine</sub> respectively using the crop data of AVE.   
 - Stage 4. testing the model of S<sub>fine</sub>, ST<sub>fine</sub>, SA<sub>fine</sub> using the crop data respectively and generate the pseudoGT of AVE dataset.   
-- Stage 5. training the model of STANet using the original AVE frames with generated pseudoGT.  
+- Stage 5. training the model of STANet(STA_train.py, STA_model.py, STA_data.py) using the original AVE frames with generated pseudoGT.  
 - The current version of the code is very complicated, the current work will continue, and this code will also be maintained. In the next version, we will merge the relevant code and refine the code to make it easier to read.
 ## Testing 
 Firstly you need to use the function audiostft.py to convert the audio files (.wav) to get the audio features(.h5).
